@@ -1,0 +1,35 @@
+import CartItemsList from '@/components/cart/CartItemsList';
+import CartTotals from '@/components/cart/CartTotals';
+import SectionTitle from '@/components/global/SectionTitle';
+import { fetchOrCreateCart, updateCart } from '@/utils/actions';
+import { auth } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
+
+
+async function CartPage() {
+  const { userId } = auth();
+  if (!userId) redirect('/'); // wont let unauthenticated user to navigate to cart via URL
+
+  const previousCart = await fetchOrCreateCart({ userId });
+  const { currentCart, cartItems } = await updateCart(previousCart); // handle the case where cart is empty and set tax to 0 instead of 5
+
+  if (cartItems.length === 0) return <SectionTitle text='Empty Cart' />;
+
+  return (
+    <>
+      <SectionTitle text=' : سبد خرید' />
+      <div className='mt-8 grid gap-4 lg:grid-cols-12'>
+
+        <div className='lg:col-span-8'>
+          <CartItemsList cartItems={cartItems} />
+        </div>
+
+        <div className='lg:col-span-4'>
+          <CartTotals cart={currentCart} />
+        </div>
+
+      </div>
+    </>
+  );
+}
+export default CartPage;
