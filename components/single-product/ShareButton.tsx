@@ -22,21 +22,18 @@ function ShareButton({ productId, name }: { productId: string; name: string }) {
 
   return (
     <Popover>
-
       <PopoverTrigger asChild>
-        <Button variant='outline' size='icon' className='p-2'>
+        <Button variant="outline" size="icon" className="p-2">
           <LuShare2 />
         </Button>
       </PopoverTrigger>
 
-
       <PopoverContent
-        side='top'
-        align='end'
+        side="top"
+        align="end"
         sideOffset={10}
-        className='flex items-center gap-x-2 justify-center w-full'
+        className="flex items-center gap-x-2 justify-center w-full ml-4"
       >
-
         <TwitterShareButton url={shareLink} title={name}>
           <TwitterIcon size={32} round />
         </TwitterShareButton>
@@ -44,13 +41,11 @@ function ShareButton({ productId, name }: { productId: string; name: string }) {
         <LinkedinShareButton url={shareLink} title={name}>
           <LinkedinIcon size={32} round />
         </LinkedinShareButton>
-        
+
         <EmailShareButton url={shareLink} title={name}>
           <EmailIcon size={32} round />
         </EmailShareButton>
-
       </PopoverContent>
-
     </Popover>
   );
 }

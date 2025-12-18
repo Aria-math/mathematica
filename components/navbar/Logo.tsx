@@ -2,15 +2,32 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 // import { VscCode } from 'react-icons/vsc';
 import { TbMathIntegralX } from 'react-icons/tb';
-
+import Image from 'next/image';
+import LogoImageLight from '@/public/images/logo-black.png';
+import LogoImageDark from '@/public/images/logo-white.png';
 
 function Logo() {
   return (
-    <Button size="icon" asChild>
-      <Link href="/">
-        <TbMathIntegralX className="w-6 h-6" />
-      </Link>
-    </Button>
+    <Link href="/">
+      <div className="w-40 h-20 relative">
+        <Image
+          src={LogoImageLight}
+          alt="logo"
+          fill
+          sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
+          priority
+          className="object-contain dark:hidden"
+        />
+        <Image
+          src={LogoImageDark}
+          alt="logo"
+          fill
+          sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
+          priority
+          className="object-contain hidden dark:block"
+        />
+      </div>
+    </Link>
   );
 }
 export default Logo;

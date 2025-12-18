@@ -29,7 +29,7 @@ function LinksDropdown() {
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-40" align="start" sideOffset={10}>
+      <DropdownMenuContent className="w-40 mr-4" align="start" sideOffset={10}>
         <SignedOut>
           <DropdownMenuItem>
             <SignInButton mode="modal">

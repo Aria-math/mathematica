@@ -121,8 +121,8 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
 export const ProductSignInButton = () => {
   return (
     <SignInButton mode='modal'>
-      <Button type='button' className='mt-8 capitalize'>
-        sign in
+      <Button type='button' className='mt-8 capitalize font-Vazir'>
+        برای افزودن به سبد خرید وارد شوید!
       </Button>
     </SignInButton>
   );
