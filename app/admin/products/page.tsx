@@ -41,7 +41,7 @@ async function AdminProductsPage() {
           {items.map((item) => {
             const { id: productId, name, company, price } = item;
             return (
-              <TableRow key={productId}>
+              <TableRow dir="rtl" key={productId}>
                 <TableCell className="text-center">
                   <Link
                     href={`/products/${productId}`}
@@ -51,7 +51,9 @@ async function AdminProductsPage() {
                   </Link>
                 </TableCell>
 
-                <TableCell className="text-center font-Vazir">{company}</TableCell>
+                <TableCell className="text-center font-Vazir">
+                  {company}
+                </TableCell>
 
                 <TableCell className="text-center font-Vazir">
                   {formatCurrency(price)}

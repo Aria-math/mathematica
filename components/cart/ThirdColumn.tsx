@@ -6,6 +6,8 @@ import FormContainer from '../form/FormContainer';
 import { SubmitButton } from '../form/Buttons';
 import { removeCartItemAction, updateCartItemAction } from '@/utils/actions';
 import { useToast } from '../ui/use-toast';
+import { IoIosWarning } from 'react-icons/io';
+import { IoIosCheckmarkCircle } from 'react-icons/io';
 
 
 function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
@@ -18,8 +20,9 @@ function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
     setIsLoading(true);
     toast({
       description: (
-        <div dir="rtl" className="font-Vazir">
-          در حال محاسبه...
+        <div className="flex items-center justify-between">
+          <IoIosWarning className="text-yellow-500 h-6 w-6 flex-shrink-0 mr-1" />
+          <div className="pr-2 font-Vazir">... در حال محاسبه</div>
         </div>
       ),
       variant: 'warning',
@@ -30,7 +33,12 @@ function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
     });
     setAmount(value);
     toast({
-      description: <div className="font-Vazir">{result.message}</div>,
+      description: (
+        <div className="flex items-center justify-between">
+          <IoIosCheckmarkCircle className="text-green-500 h-6 w-6 flex-shrink-0 mr-1" />
+          <div className="pr-2 font-Vazir">{result.message}</div>
+        </div>
+      ),
       variant: 'success',
     });
     setIsLoading(false);

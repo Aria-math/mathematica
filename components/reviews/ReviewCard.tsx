@@ -15,25 +15,22 @@ type ReviewCardProps = {
 
 function ReviewCard({ reviewInfo, children }: ReviewCardProps) {
   return (
-    <Card className='relative'>
-
-      <CardHeader className=''>
-        <div className='flex items-center'>
+    <Card className="relative">
+      <CardHeader className="">
+        <div className="flex items-center">
           <Image
             src={reviewInfo.image}
             alt={reviewInfo.name}
             width={48}
             height={48}
-            className='w-12 h-12 rounded-full object-cover'
+            className="w-12 h-12 rounded-full object-cover"
             unoptimized
           />
-          <div className='mr-4'>
-
-            <h3 className='text-sm font-bold capitalize mb-1'>
+          <div className="mr-4">
+            <h3 className="text-sm font-bold capitalize mb-1 font-Vazir">
               {reviewInfo.name}
             </h3>
             <Rating rating={reviewInfo.rating} />
-            
           </div>
         </div>
       </CardHeader>
@@ -42,8 +39,7 @@ function ReviewCard({ reviewInfo, children }: ReviewCardProps) {
         <Comment comment={reviewInfo.comment} />
       </CardContent>
 
-      <div className='absolute top-3 left-3'>{children}</div>
-
+      <div className="absolute top-3 left-3">{children}</div>
     </Card>
   );
 }

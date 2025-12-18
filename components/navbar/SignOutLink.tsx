@@ -3,14 +3,16 @@
 import { SignOutButton } from '@clerk/nextjs';
 import { useToast } from '../ui/use-toast';
 import Link from 'next/link';
+import { IoIosCheckmarkCircle } from 'react-icons/io';
 
 function SignOutLink() {
   const { toast } = useToast();
   const handleLogout = () => {
     toast({
       description: (
-        <div dir="rtl" className="text-right font-Vazir">
-          در حال خروج از سیستم...!
+        <div className="flex items-center justify-between">
+          <IoIosCheckmarkCircle className="text-green-500 h-6 w-6 flex-shrink-0 mr-1" />
+          <div className="pr-2 font-Vazir"> ! ... در حال خروج از سیستم</div>
         </div>
       ),
       variant: 'success',

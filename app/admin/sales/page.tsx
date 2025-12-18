@@ -38,7 +38,7 @@ async function SalesPage() {
           const { products, orderTotal, tax, shipping, createdAt, email } =
             order;
           return (
-            <TableRow key={order.id}>
+            <TableRow dir='rtl' key={order.id}>
               <TableCell className="text-center">{email}</TableCell>
               <TableCell className="text-center font-Vazir">{products}</TableCell>
               <TableCell className="text-center font-Vazir">

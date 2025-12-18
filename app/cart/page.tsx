@@ -13,7 +13,7 @@ async function CartPage() {
   const previousCart = await fetchOrCreateCart({ userId });
   const { currentCart, cartItems } = await updateCart(previousCart); // handle the case where cart is empty and set tax to 0 instead of 5
 
-  if (cartItems.length === 0) return <SectionTitle text='Empty Cart' />;
+  if (cartItems.length === 0) return <SectionTitle text='سبد خرید شما خالی می باشد' />;
 
   return (
     <>

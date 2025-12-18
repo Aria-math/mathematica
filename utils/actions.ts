@@ -31,9 +31,9 @@ const renderError = (error: unknown): { message: string } => {
     message:
       error instanceof Error
         ? error.message.includes('باشد')
-          ? 'ERROR! : ' + error.message
-          : 'ERROR! : an error occurred'
-        : 'ERROR! : an error occurred',
+          ? 'ERROR! ' + error.message
+          : 'ERROR!  مشکلی رخ داده است. لطفا دوباره امتحان کنید'
+        : 'ERROR!  مشکلی رخ داده است. لطفا دوباره امتحان کنید',
   };
 };
 
@@ -120,7 +120,7 @@ export const deleteProductAction = async (IncomingData: {
     });
     await deleteImage(product.image);
     revalidatePath('/admin/products');
-    return { message: 'محصول با موفقیت حذف شد' };
+    return { message: ' ! محصول با موفقیت حذف شد' };
   } catch (error) {
     return renderError(error);
   }
@@ -156,7 +156,7 @@ export const updateProductAction = async (
       },
     });
     revalidatePath(`/admin/products/${productId}/edit`);
-    return { message: 'محصول با موفقیت به روزرسانی شد' };
+    return { message: ' ! محصول با موفقیت به روزرسانی شد' };
   } catch (error) {
     return renderError(error);
   }
@@ -186,7 +186,7 @@ export const updateProductImageAction = async (
       },
     });
     revalidatePath(`/admin/products/${productId}/edit`);
-    return { message: 'تصویر محصول با موفقیت به روزرسانی شد' };
+    return { message: ' ! تصویر محصول با موفقیت به روزرسانی شد' };
   } catch (error) {
     return renderError(error);
   }
@@ -232,8 +232,8 @@ export const toggleFavoriteAction = async (IncomingData: {
     revalidatePath(pathname);
     return {
       message: favoriteId
-        ? 'با موفقیت از پسندیده ها حذف شد'
-        : 'با موفقیت به پسندیده ها اضافه شد',
+        ? ' ! با موفقیت از پسندیده ها حذف شد'
+        : ' ! با موفقیت به پسندیده ها اضافه شد',
     };
   } catch (error) {
     return renderError(error);
@@ -253,6 +253,11 @@ export const fetchUserFavorites = async () => {
   return favorites;
 };
 
+
+
+
+
+
 export const createReviewAction = async (
   prevState: any,
   formData: FormData
@@ -267,12 +272,22 @@ export const createReviewAction = async (
         clerkId: user.id,
       },
     });
-    revalidatePath(`/products/${validatedFields.productId}`);
-    return { message: 'نظر شما با موفقیت ثبت شد' };
+    // revalidatePath(`/products/${validatedFields.productId}`);
+    return { message: ' ! نظر شما با موفقیت ثبت شد' };
   } catch (error) {
     return renderError(error);
   }
 };
+
+
+
+
+
+
+
+
+
+
 
 export const fetchProductReviews = async (productId: string) => {
   const reviews = await db.review.findMany({
@@ -336,8 +351,8 @@ export const deleteReviewAction = async (IncomingData: {
         clerkId: user.id,
       },
     });
-    revalidatePath('/reviews');
-    return { message: 'نظر شما با موفقیت حذف شد' };
+    // revalidatePath('/reviews');
+    return { message: ' ! نظر شما با موفقیت حذف شد' };
   } catch (error) {
     return renderError(error);
   }
@@ -517,8 +532,8 @@ export const removeCartItemAction = async (
       },
     });
     await updateCart(cart);
-    revalidatePath('/cart');
-    return { message: 'محصول با موفقیت از سبد محصولات حذف شد' };
+    // revalidatePath('/cart');
+    return { message: ' ! محصول با موفقیت از سبد محصولات حذف شد' };
   } catch (error) {
     return renderError(error);
   }
@@ -549,7 +564,7 @@ export const updateCartItemAction = async ({
     });
     await updateCart(cart);
     revalidatePath('/cart');
-    return { message: 'سبد خرید به روزرسانی شد' };
+    return { message: ' ! سبد خرید به روزرسانی شد' };
   } catch (error) {
     return renderError(error);
   }
